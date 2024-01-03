@@ -106,11 +106,57 @@ Q(t+1)=T′Q(t)+TQ(t)′
 
 
 
-### PROGRAM 
+### PROGRAM :
+>SR Flip flop:module sr_flipflop(S,R,clk,Q,Qbar);
+input S,R,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=S|((~R)&Q);
+Qbar=R|((~S)&(Qbar));
+end
+endmodule
+>D Flip Flop:module exp_5_dff(D,clk,Q,Qbar);
+input D,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=D;
+Qbar=~D;
+end
+endmodule
+>JK Flip Flop:module jk_ff(J,K,clk,Q,Qbar);
+input J,K,clk;
+output reg Q;
+output reg Qbar;
+initial Q=0;
+initial Qbar=1;
+always @(posedge clk)
+begin
+Q=(J&(~Q))|((~K)&Q);
+Qbar=((~J)&(Qbar))|K&(~Qbar);
+end
+endmodule
+>T Flip Flop:module t_ff(clk,T,q,qbar);
+input clk,T;
+output q,qbar;
+reg q,qbar;
+always @(posedge clk)
+begin
+q<=(T&~q)|(~T&q);
+qbar<=~q;
+end
+endmodule
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by:DANUSH REDDY 
+RegisterNumber:212223040029  
 */
 
 
@@ -118,17 +164,25 @@ RegisterNumber:
 
 
 
-### RTL LOGIC FOR FLIPFLOPS 
+### RTL LOGIC FOR FLIPFLOPS :
+>SR FLIP FLOP: ![image](https://github.com/danushreddy7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/149035740/6e5db483-fc04-4eb5-8db0-035af736f5a5)
+
+>D FLIP FOP:![image](https://github.com/danushreddy7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/149035740/f6706603-5bd9-4753-b730-cad4a3ca685f)
+
+>JK FLIP FLOP:![image](https://github.com/danushreddy7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/149035740/d26f7166-6f94-4858-a5c8-1aa8f1a3df49)
+
+>T FLIP FLOP:![image](https://github.com/danushreddy7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/149035740/4576a31d-7096-4aeb-bb6a-46a29aa426f5)
 
 
+### TIMING DIGRAMS FOR FLIP FLOPS:
+>SR FLIP FLOP:![Image 2024-01-03 at 09 18 45_5823bed9](https://github.com/danushreddy7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/149035740/66768c1a-a4d2-4b47-a8bf-b0e89aba4959)
 
+>D FLIP FLOP:![Image 2024-01-03 at 09 18 46_641fd4e4](https://github.com/danushreddy7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/149035740/de30a038-9773-404e-a5fa-1562608ef8ed)
 
+>JK FLIP FLP:![Image 2024-01-03 at 09 18 47_60387367](https://github.com/danushreddy7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/149035740/40eb02a7-7829-48b1-845c-cbdfdaef8f6a)
 
+>T FLIP FLOP:![Image 2024-01-03 at 09 18 47_2a66b370](https://github.com/danushreddy7/Experiment--05-Implementation-of-flipflops-using-verilog/assets/149035740/c8a15f9d-c215-4093-b62a-618839dab1fb)
 
-
-
-
-### TIMING DIGRAMS FOR FLIP FLOPS 
 
 
 
@@ -138,3 +192,4 @@ RegisterNumber:
 
 
 ### RESULTS 
+:
